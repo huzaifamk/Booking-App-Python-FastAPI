@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.params import Body
 
 app = FastAPI()
 
@@ -11,5 +12,6 @@ async def bookings():
     return {"message": "Bookings"}
 
 @app.post("/create-booking")
-async def create_booking():
-    return {"message": "Create Booking"}
+async def create_booking(payload: dict = Body(...)):
+    print(payload)
+    return {"Title": f"Booking for {payload['Hotel_Name']} created successfully"}
