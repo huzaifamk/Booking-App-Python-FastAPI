@@ -37,6 +37,18 @@ async def delete_booking(id: int, response: Response):
         if booking.id == id:
             temp_booking.remove(booking)
             return {"message": f"Booking with id {id} is deleted successfully"}
+    raise HTTPException(status_code=204, detail=f"Booking with id {id} not found")
+
+@app.put("/bookings/{id}")
+async def update_booking(id: int, payload: Booking, response: Response):
+    for booking in temp_booking:
+        if booking.id == id:
+            booking.Hotel_Name = payload.Hotel_Name
+            booking.Address = payload.Address
+            booking.Price = payload.Price
+            booking.Is_Available = payload.Is_Available
+            booking.Rating = payload.Rating
+            return {"message": f"Booking with id {id} is updated successfully"}
     raise HTTPException(status_code=404, detail=f"Booking with id {id} not found")
 
 @app.get("/bookings")
