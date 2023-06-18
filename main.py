@@ -5,7 +5,6 @@ from typing import Optional
 
 app = FastAPI()
 
-
 class Booking(BaseModel):
     id: int
     Hotel_Name: str
@@ -14,11 +13,7 @@ class Booking(BaseModel):
     Is_Available: bool
     Rating: Optional[float] = None
 
-
-# temp_booking = Booking(id=1, Hotel_Name="Taj", Address="Mumbai", Price=10000, Is_Available=True, Rating=4.5), Booking(id=2, Hotel_Name="Oberoi", Address="Delhi", Price=15000, Is_Available=True, Rating=4.8), Booking(id=3, Hotel_Name="Leela", Address="Bangalore", Price=20000, Is_Available=True, Rating=4.9), Booking(id=4, Hotel_Name="Taj", Address="Chennai", Price=10000, Is_Available=True, Rating=4.5), Booking(id=5, Hotel_Name="Oberoi", Address="Kolkata", Price=15000, Is_Available=True, Rating=4.8), Booking(id=6, Hotel_Name="Leela", Address="Pune", Price=20000, Is_Available=True, Rating=4.9), Booking(id=7, Hotel_Name="Taj", Address="Hyderabad", Price=10000, Is_Available=True, Rating=4.5), Booking(id=8, Hotel_Name="Oberoi", Address="Ahmedabad", Price=15000, Is_Available=True, Rating=4.8), Booking(id=9, Hotel_Name="Leela", Address="Jaipur", Price=20000, Is_Available=True, Rating=4.9), Booking(id=10, Hotel_Name="Taj", Address="Lucknow", Price=10000, Is_Available=True, Rating=4.5), Booking(id=11, Hotel_Name="Oberoi", Address="Kanpur", Price=15000, Is_Available=True, Rating=4.8), Booking(id=12, Hotel_Name="Leela", Address="Noida", Price=20000, Is_Available=True, Rating=4.9)
-
 temp_booking = [Booking(id=1, Hotel_Name="Taj", Address="Mumbai", Price=10000, Is_Available=True, Rating=4.5), Booking(id=2, Hotel_Name="Oberoi", Address="Delhi", Price=15000, Is_Available=True, Rating=4.8), Booking(id=3, Hotel_Name="Leela", Address="Bangalore", Price=20000, Is_Available=True, Rating=4.9), Booking(id=4, Hotel_Name="Taj", Address="Chennai", Price=10000, Is_Available=True, Rating=4.5), Booking(id=5, Hotel_Name="Oberoi", Address="Kolkata", Price=15000, Is_Available=True, Rating=4.8), Booking(id=6, Hotel_Name="Leela", Address="Pune", Price=20000, Is_Available=True, Rating=4.9), Booking(id=7, Hotel_Name="Taj", Address="Hyderabad", Price=10000, Is_Available=True, Rating=4.5), Booking(id=8, Hotel_Name="Oberoi", Address="Ahmedabad", Price=15000, Is_Available=True, Rating=4.8), Booking(id=9, Hotel_Name="Leela", Address="Jaipur", Price=20000, Is_Available=True, Rating=4.9), Booking(id=10, Hotel_Name="Taj", Address="Lucknow", Price=10000, Is_Available=True, Rating=4.5), Booking(id=11, Hotel_Name="Oberoi", Address="Kanpur", Price=15000, Is_Available=True, Rating=4.8), Booking(id=12, Hotel_Name="Leela", Address="Noida", Price=20000, Is_Available=True, Rating=4.9)]
-
 
 @app.get("/")
 async def root():
@@ -54,7 +49,6 @@ async def update_booking(id: int, payload: Booking, response: Response):
 @app.get("/bookings")
 async def bookings():
     return {"data": temp_booking}
-
 
 @app.post("/create-booking", status_code=status.HTTP_201_CREATED)
 async def create_booking(payload: Booking):
